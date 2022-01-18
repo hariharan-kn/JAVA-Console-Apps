@@ -66,28 +66,28 @@ class Main{
     public static int add2cart(ArrayList<Book> x){
         Scanner sc = new Scanner(System.in);
         System.out.println("Select the book you want to borrow : ");
-        int res=-1;
+        int ures=-1;
         for(int i=0;i<x.size();i++){
             System.out.println(i+"-"+x.get(i).name);
         }
         int v =sc.nextInt();
         if((v>=0)&&(v<x.size())){
-            res=v;
+            ures=v;
         }
-        return res;
+        return ures;
     }
     public static int removefromcart(ArrayList<Book> x){
         System.out.println("Select the Bok You want to return : ");
         Scanner sc = new Scanner(System.in);
-        int res=-1;
+        int ures=-1;
         for(int i=0;i<x.size();i++){
             System.out.println(i+"-"+x.get(i).name);
         }
         int v =sc.nextInt();
         if((v>=0)&&(v<x.size())){
-            res=v;
+            ures=v;
         }
-        return res;
+        return ures;
     }
 
     public static int valid_admin(ArrayList<Admin> x){
@@ -154,8 +154,9 @@ class Main{
                     System.out.println("2-remove book");
                     System.out.println("3-Edit book");
                     System.out.println("4-View books");
-                    System.out.println("5-Show Borrowed Book List");
-                    System.out.println("6-LogOut");
+                    System.out.println("5-Search Books");
+                    System.out.println("6-Show Borrowed Book List");
+                    System.out.println("7-LogOut");
                     System.out.println("Enter Your Choice : ");
                     int ach = sc.nextInt();
                     switch(ach){
@@ -203,7 +204,7 @@ class Main{
                             System.out.println("count : "+books.get(i).count);
                         }
                         break;
-                        case 5:for(int i=0;i<users.size();i++){
+                        case 6:for(int i=0;i<users.size();i++){
                             System.out.println(users.get(i).name);
                             for(int j=0;j<users.get(i).cart.size();j++){
                                 System.out.println(users.get(i).cart.get(j).name);
@@ -211,8 +212,22 @@ class Main{
                             System.out.println();
                         }
                         break;
-                        case 6:admin_exit=true;
+                        case 7:admin_exit=true;
                         break;
+                        case 5:System.out.println("Enter ISBN number : ");
+                        int thesearch = sc.nextInt();
+                        int ures=-1;
+                        for(int i=0;i<books.size();i++){
+                            if(books.get(i).isbn==thesearch){
+                                ures=i;
+                            }
+                        }
+                        if(ures!=-1){
+                            System.out.println("name : "+books.get(ures).name+" isbn : "+books.get(ures).isbn+" count : "+books.get(ures).count);
+                        }
+                        else{
+                            System.out.println("No search results found");
+                        }
                         default:System.out.println("Enter a valid option");
                     }
                 }
@@ -229,12 +244,13 @@ class Main{
                         System.out.println("2-Return Book");
                         System.out.println("3-Check Wallet Balance");
                         System.out.println("4-Add Amount to Wallet");
-                        System.out.println("5-View My Cart");
-                        System.out.println("6-LogOut");
+                        System.out.println("5-Search Books ");
+                        System.out.println("6-View My Cart");
+                        System.out.println("7-LogOut");
                         System.out.println("Enter Your choice : ");
                         int uc = sc.nextInt();
                         switch(uc){
-                            case 1:if(users.get(ul).money>500){
+                            case 1:if(users.get(ul).money>500&&users.get(ul).cart.size()<3){
                             int bb = add2cart(books);
                             if(bb!=-1){
                                 Boolean alb = true;
@@ -323,11 +339,27 @@ class Main{
                                 System.out.println("Enter a valid amount");
                             }
                             break;
-                            case 5:for(int i=0;i<users.get(ul).cart.size();i++){
+                            case 6:for(int i=0;i<users.get(ul).cart.size();i++){
                                 System.out.println(users.get(ul).cart.get(i).name);
                             }
                             break;
-                            case 6:user_exit=true;
+                            case 7:user_exit=true;
+                            break;
+                            case 5:System.out.println("Enter ISBN number : ");
+                            int thesearch = sc.nextInt();
+                            int ures=-1;
+                            for(int i=0;i<books.size();i++){
+                                if(books.get(i).isbn==thesearch){
+                                    ures=i;
+                                }
+                            }
+                            if(ures!=-1){
+                                System.out.println("name : "+books.get(ures).name+" isbn : "+books.get(ures).isbn+" count : "+books.get(ures).count);
+                            }
+                            else{
+                                System.out.println("No search results found");
+                            }
+                            default:System.out.println("Select a valid option");
                         }
                     }
                 }
