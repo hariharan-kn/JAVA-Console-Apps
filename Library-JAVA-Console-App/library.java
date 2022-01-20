@@ -318,10 +318,12 @@ class Main{
                                     switch(fc){
                                         case 1:users.get(ul).money-=fineamount;
                                         users.get(ul).cart.remove(rb);
-                                    users.get(ul).borrowtime.remove(rb);
+                                        users.get(ul).borrowtime.remove(rb);
+                                        books.get(f).count+=1;
                                         break;
                                         case 2:users.get(ul).cart.remove(rb);
                                         users.get(ul).borrowtime.remove(rb);
+                                        books.get(f).count+=1;
                                         break;
                                     }
                                 }
