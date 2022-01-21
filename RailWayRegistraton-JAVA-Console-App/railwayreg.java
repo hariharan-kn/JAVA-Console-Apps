@@ -67,7 +67,7 @@ class Main{
         int rid = sc.nextInt();
         for(int i=0;i<x.size();i++){
             if(x.get(i).id==rid){
-                res=rid;
+                res=i;
             }
         }
         return res;
