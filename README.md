@@ -1,1 +1,13 @@
-# PlacementTrainingJAVA
+**ATM-JAVA-Console-App**
+Admin 1 username = "admin1"
+        password = "1111"
+Admin 2 username = "admin2"
+        password = "1112"
+Admin 3 username = "admin3"
+        password = "1113"
+User 1 username = "user1"
+        password = "1111"
+User 2 username = "user2"
+        password = "2222"
+User 3 username = "user3"
+        password = "3333"
