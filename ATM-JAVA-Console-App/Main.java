@@ -17,6 +17,7 @@ class UserAccount{
         int va =wa;
         int ha = va;
         int[] val = new int[]{100,200,500,2000};
+        if(wa<=a){
         if(wa<=b[4]){
             if((a>=wa)&&(wa%100==0)){
                 Boolean x =false;
@@ -67,6 +68,12 @@ class UserAccount{
         ans.add(null);
         return ans;
     }
+}else{
+    System.out.println("Insufficient Balance");
+    ans.add(null);
+    ans.add(null);
+    return ans;
+}
     }
     public static ArrayList<String> deposit(int a){
         LocalDateTime myDateObj = LocalDateTime.now();
