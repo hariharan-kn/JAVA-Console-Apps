@@ -373,8 +373,8 @@ class Main{
                             for(int i=0;i<users.get(ul).History.size();i++){
                                 if(users.get(ul).History.get(i).id==caID){
                                     Hindi = i;
-                                }
-                            }
+                                }}
+                            
                             users.get(ul).History.remove(Hindi);
                             cars.get(indi).timeline.remove(tindi);
 
