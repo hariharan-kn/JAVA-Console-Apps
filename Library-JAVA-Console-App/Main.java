@@ -22,7 +22,7 @@ class Borrower{
     int money =1500;
 }
 
-class Main{
+public class Main{
     public static Book addbook(ArrayList<Book> y){
         Scanner sc = new Scanner(System.in);
         Book x = new Book();
