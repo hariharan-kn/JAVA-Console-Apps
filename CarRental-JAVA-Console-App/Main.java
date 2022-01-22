@@ -169,9 +169,9 @@ public class Main{
         User u1 = new User();
         User u2 = new User();
         u1.name = "u1";
-        u1.pin = "u1u1";
+        u1.pin = "1111";
         u2.name = "u2";
-        u2.pin = "u2u2";
+        u2.pin = "2222";
         users.add(u1);
         users.add(u2);
         Car c1 = new Car();
@@ -186,7 +186,7 @@ public class Main{
         cars.add(c2);
         Admin a1 = new Admin();
         a1.name = "a1";
-        a1.pin = "a1a1"; 
+        a1.pin = "1111"; 
         admins.add(a1);
         Boolean whole_exit = false;
         while(!whole_exit){
