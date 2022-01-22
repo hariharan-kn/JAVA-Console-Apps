@@ -18,6 +18,7 @@ class GroupExpense{
     String name;
     User from;
     ArrayList<User> to = new ArrayList<>();
+    ArrayList<User> done = new ArrayList<>();
     int amt;
 }
 class Group{
@@ -36,10 +37,14 @@ class Main{
         int gind = sc.nextInt();
         res.add(gind);
         for(int i=0;i<x.friends.size();i++){
+            Boolean b  = true;
             for(int j=0;j<x.groups.get(gind).groupmembers.size();j++){
-            if(!x.friends.get(i).name.equals(x.groups.get(gind).groupmembers.get(j).name)){
-                System.out.println(i+" - "+x.friends.get(i).name);
+            if(x.friends.get(i).name.equals(x.groups.get(gind).groupmembers.get(j).name)){
+                b=false;
             }
+        }
+        if(b){
+            System.out.println(i+" - "+x.friends.get(i).name);
         }
         }
         System.out.println("Enter the Numer of Friends : ");
@@ -76,28 +81,37 @@ class Main{
     public static int addfriends(ArrayList<User> x,ArrayList<User> y,int ul){
         int res = -1;
         Scanner sc = new Scanner(System.in);
+        Boolean p = false;
         if(y.size()>0){
         for(int i=0;i<x.size();i++){
+            Boolean b= true;
             for(int j=0;j<y.size();j++){
-                if((!x.get(i).name.equals(y.get(j).name))&&(!x.get(i).name.equals(x.get(ul).name))){
-            System.out.println(i+"-"+x.get(i).name);
+                if((x.get(i).name.equals(y.get(j).name))||(x.get(i).name.equals(x.get(ul).name))){
+            b = false;
                 }
+            }
+            if(b){
+            System.out.println(i+"-"+x.get(i).name);
+            p=true;
             }
         }
     }
     else{
         for(int i=0;i<x.size();i++){
                 if(!x.get(i).name.equals(x.get(ul).name)){
+                    p = true;
             System.out.println(i+"-"+x.get(i).name);
                 }
         }
 
     }
+    if(p){
         System.out.println("Choose from the above  : ");
         int ch = sc.nextInt();
         if(ch>=0&&ch<x.size()){
             res = ch;
         }
+    }
         return res;
     }
     public static int addwallet(){
@@ -147,6 +161,7 @@ class Main{
     else{
         e.amt = -2;
     }
+    
         return e;
 
     }
@@ -204,11 +219,24 @@ class Main{
                 if(!x.get(k).name.equals(g.groupmembers.get(j).name)){
                     g.groupmembers.add(x.get(k));
                 }
-                else{
-                    System.out.println("User Already in group");
-                }
             }
-        }}
+        }
+        
+    }
+    for(int i=0;i<g.groupmembers.size();i++){
+        int c=0;
+        for(int j=0;j<g.groupmembers.size();j++){
+            if(g.groupmembers.get(i).name.equals(g.groupmembers.get(j).name)){
+                c+=1;
+            }
+        }
+        if(c>1){
+            g.groupmembers.remove(i);
+        }
+    }
+    for(int i=0;i<g.groupmembers.size();i++){
+        System.out.println(g.groupmembers.get(i).name);
+    }
         return g;
     }
     public static void main(String[] args) {
@@ -339,18 +367,80 @@ class Main{
                                 }
                             }
                             break;
+                            case 7:
+                            GroupExpense age = new GroupExpense();
+                            for(int i=0;i<users.get(ul).groups.size();i++){
+                                System.out.println(i+"-"+users.get(ul).groups.get(i).name);
+                            }
+                            System.out.println("Choose the Group : ");
+                            int ageo = sc.nextInt();
+                            System.out.println("Enter the expense name : ");
+                            age.name = sc.next();
+                            System.out.println("Enter the expense amount : ");
+                            age.amt = sc.nextInt();
+                            age.from = users.get(ul);
+                            for(int i=0;i<users.get(ul).groups.get(ageo).groupmembers.size();i++){
+                                age.to.add(users.get(ul).groups.get(ageo).groupmembers.get(i));
+                            }
+                            age.to.remove(users.get(ul));
+                            if(age.amt!=-1){
+                                users.get(ul).groups.get(ageo).groupexpenses.add(age);
+                            }
+                               
+                            break;
                             case 8:
+                            System.out.println(users.get(ul).groups.get(0).groupexpenses.size());
                             for(int i=0;i<users.get(ul).groups.size();i++){
                                 System.out.println("Group name : "+users.get(ul).groups.get(i).name);
                                 for(int j=0;j<users.get(ul).groups.get(i).groupexpenses.size();j++){
                                     System.out.println("Expense name : "+users.get(ul).groups.get(i).groupexpenses.get(j).name);
                                     System.out.println("Expense Amount : "+users.get(ul).groups.get(i).groupexpenses.get(j).amt);
-                                    System.out.println("Payed By : "+users.get(ul).groups.get(i).groupexpenses.get(j).from);
+                                    System.out.println("Payed By : "+users.get(ul).groups.get(i).groupexpenses.get(j).from.name);
                                     for(int k=0;k<users.get(ul).groups.get(i).groupexpenses.get(j).to.size();k++){
-                                        System.out.println("Owed By : "+users.get(ul).groups.get(i).groupexpenses.get(j).to.get(k));
+                                        System.out.println("Owed By : "+users.get(ul).groups.get(i).groupexpenses.get(j).to.get(k).name);
+                                    }
+                                    for(int k=0;k<users.get(ul).groups.get(i).groupexpenses.get(j).done.size();k++){
+                                        System.out.println("Done Owing : "+users.get(ul).groups.get(i).groupexpenses.get(j).done.get(k).name);
                                     }
                                     System.out.println("--------------------------------------------");
                                 }
+                                System.out.print("Group Members : ");
+                                for(int j=0;j<users.get(ul).groups.get(i).groupmembers.size();j++){
+                                    System.out.print(users.get(ul).groups.get(i).groupmembers.get(j).name);
+                                }
+                                System.out.println();
+                            }
+                            break;
+                            case 9:for(int i=0;i<users.get(ul).groups.size();i++){
+                                System.out.println(i+"-"+users.get(ul).groups.get(i).name);
+                            }
+                            float pa=0;
+                            int pg = sc.nextInt();
+                            for(int i=0;i<users.get(ul).groups.get(pg).groupexpenses.size();i++){
+                                if(!users.get(ul).groups.get(pg).groupexpenses.get(i).from.equals(users.get(ul))){
+                                    System.out.println(i+"-"+users.get(ul).groups.get(pg).groupexpenses.get(i).name);
+                                }
+                            }
+                            System.out.println("Choose the expense : ");
+                            int pe  = sc.nextInt();
+                            pa=(float)users.get(ul).groups.get(pg).groupexpenses.get(pe).amt/(users.get(ul).groups.get(pg).groupexpenses.get(pe).to.size()+1);
+                            if(pa>0){
+                                System.out.println("0-Pay from Wallet ");
+                                System.out.println("1-Not Now");
+                                int uuc = sc.nextInt();
+                                if(uuc==0){
+                                    if(users.get(ul).wallet>pa){
+                                        System.out.println(users.get(ul).wallet);
+                                        System.out.println(pa);
+                                        users.get(ul).wallet-=pa;
+                                        users.get(ul).groups.get(pg).groupexpenses.get(pe).done.add(users.get(ul));
+                                        users.get(ul).groups.get(pg).groupexpenses.get(pe).from.wallet+=pa;
+                                    }
+                                    else{
+                                        System.out.println("Insuffiecient Balance");
+                                    }
+                                }
+                                
                             }
                             break;
                             case 10:for(int i = 0;i<users.get(ul).friends.size();i++){
