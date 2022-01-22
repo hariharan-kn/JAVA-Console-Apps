@@ -26,7 +26,22 @@ class Group{
     ArrayList<User> groupmembers = new ArrayList<>();
     ArrayList<GroupExpense> groupexpenses = new ArrayList<>();
 }
-class Main{
+public class Main{
+    public static User createuser(){
+        Scanner sc = new Scanner(System.in);
+        User u = new User();
+        System.out.println("Enter Name : ");
+        u.name = sc.next();
+        System.out.println("Enter Pin : ");
+        u.pin = sc.next();
+        System.out.println("Enter Amount to add in wallet : ");
+        u.wallet = sc.nextInt();
+        if(u.wallet<0){
+            u.wallet = 0;
+            System.out.println("Invalid Amount");
+        }
+        return u;
+    }
     public static ArrayList<Integer> addmember(User x){
         ArrayList<Integer> res = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
@@ -261,21 +276,15 @@ class Main{
         users.get(0).friends.add(users.get(2));
         users.get(1).friends.add(users.get(0));
         users.get(2).friends.add(users.get(0));
-
-
-
-
-
-
-
         Boolean whole_exit = false;
         while(!whole_exit){
+            
             System.out.println("1-New User");
             System.out.println("2-Existing User");
             System.out.println("3-Exit");
             int ch = sc.nextInt();
             switch(ch){
-                case 1:System.out.println("You are a new User");
+                case 1:users.add(createuser());
                 break;
                 case 2 : int ul = valid_user(users);
                 if(ul!=-1){
@@ -418,7 +427,15 @@ class Main{
                             int pg = sc.nextInt();
                             for(int i=0;i<users.get(ul).groups.get(pg).groupexpenses.size();i++){
                                 if(!users.get(ul).groups.get(pg).groupexpenses.get(i).from.equals(users.get(ul))){
+                                    Boolean b = true;
+                                    for(int j=0;j<users.get(ul).groups.get(pg).groupexpenses.get(i).done.size();j++){
+                                        if(users.get(ul).groups.get(pg).groupexpenses.get(i).done.get(j).equals(users.get(ul))){
+                                            b=false;
+                                        }
+                                    }
+                                    if(b){
                                     System.out.println(i+"-"+users.get(ul).groups.get(pg).groupexpenses.get(i).name);
+                                }
                                 }
                             }
                             System.out.println("Choose the expense : ");
