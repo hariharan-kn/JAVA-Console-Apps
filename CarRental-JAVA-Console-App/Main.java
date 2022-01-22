@@ -31,7 +31,7 @@ class User{
     ArrayList<Bill> History = new ArrayList<>();
 }
 
-class Main{
+public class Main{
     public static long avail_date(Car x,String spickup,String sdrop) throws Exception{
         SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy HH:mm");
         Date pickup = f.parse(spickup);
