@@ -151,7 +151,7 @@ class Merchant{
         return ans;
     } 
 }
-class Main{
+public class Main{
     public static User createuser(){
         Scanner sc = new Scanner(System.in);
         User x =new User();
