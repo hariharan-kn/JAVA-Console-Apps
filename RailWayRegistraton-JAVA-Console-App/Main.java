@@ -24,7 +24,7 @@ class Admin{
     String name;
     String pin;
 }
-class Main{
+public class Main{
     public static ArrayList<Integer> edittrain(ArrayList<Train> x){
         Scanner sc = new Scanner(System.in);
         ArrayList<Integer> res = new ArrayList<>();
