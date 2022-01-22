@@ -174,7 +174,7 @@ class Admin{
         }
     }
 }
-class Main{
+public class Main{
     public static String changepin(String x){
         Scanner sc = new Scanner(System.in);
         System.out.println("Entered current PIN : ");
