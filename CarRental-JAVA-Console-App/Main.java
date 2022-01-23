@@ -11,26 +11,22 @@ class Car{
     ArrayList<Booked> timeline = new ArrayList<>();
     int pph;
 }
-
 class Admin{
     String name;
     String pin;
 
 }
-
 class Bill{
     Date pickup;
     Date drop;
     int id;
     int amt;
 }
-
 class User{
     String name;
     String pin;
     ArrayList<Bill> History = new ArrayList<>();
 }
-
 public class Main{
     public static long avail_date(Car x,String spickup,String sdrop) throws Exception{
         SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy HH:mm");
@@ -53,8 +49,7 @@ public class Main{
     }
         return res;
     }
-
-    public static ArrayList<Integer> editcar(ArrayList<Car> x){
+public static ArrayList<Integer> editcar(ArrayList<Car> x){
         Scanner sc = new Scanner(System.in);
         ArrayList<Integer> n = new ArrayList<>();
         for(int i=0;i<x.size();i++){
@@ -355,7 +350,7 @@ public class Main{
                                 System.out.println("Drop Time : "+users.get(ul).History.get(i).drop);
                                 System.out.println("Total Amount : "+users.get(ul).History.get(i).amt);
                             }
-                            System.out.println("Enter The car ID You want to book : ");
+                            System.out.println("Enter The car ID You want to Cancel Booking : ");
                             int caID = sc.nextInt();
                             int indi=-1;
                             for(int i=0;i<cars.size();i++){
@@ -377,8 +372,6 @@ public class Main{
                             
                             users.get(ul).History.remove(Hindi);
                             cars.get(indi).timeline.remove(tindi);
-
-
                             break;
                             case 3:for(int i=0;i<users.get(ul).History.size();i++){
                                 System.out.println("Car ID : "+users.get(ul).History.get(i).id);
