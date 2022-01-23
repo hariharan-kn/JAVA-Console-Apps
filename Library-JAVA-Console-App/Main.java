@@ -60,10 +60,7 @@ public class Main{
     return -1; 
     }
     }
-
-
-
-    public static int add2cart(ArrayList<Book> x){
+public static int add2cart(ArrayList<Book> x){
         Scanner sc = new Scanner(System.in);
         System.out.println("Select the book you want to borrow : ");
         int ures=-1;
@@ -138,7 +135,8 @@ public class Main{
         a.name = "a1";
         a.pin = "1111";
         books.add(x);
-        users.add(b);
+        users.add(u1);
+        users.add(u2);
         admins.add(a);
         Boolean whole_exit = false;
         while(!whole_exit){
@@ -166,7 +164,6 @@ public class Main{
                         case 1:Book ab = addbook(books);
                         if(ab.isbn!=-1){
                             books.add(ab);
-                            
                             System.out.println("Book added successfully");
                         }
                         else{
@@ -182,7 +179,7 @@ public class Main{
                         int eb = sc.nextInt();
                         if((eb<books.size())&&(eb>=0)){
                             System.out.println("0-name");
-                            System.out.println("2-count");
+                            System.out.println("1-count");
                             System.out.println("Enter Your Choice");
                             int c = sc.nextInt();
                             if((c>=0)&&(c<2)){
@@ -266,6 +263,7 @@ public class Main{
                                 users.get(ul).cart.add(books.get(bb));
                                 users.get(ul).borrowtime.add(LocalTime.now());
                                 books.get(bb).count-=1;
+                                System.out.println("**Return Book within a minute to avoid being fined**");
                                 }
                                 else{
                                     System.out.println("Yoy already have this book");
@@ -297,6 +295,7 @@ public class Main{
                                     System.out.println("Book returning date expired");
                                     long fineamount = 0;
                                     finetime-=1;
+                                    System.out.println("Book return time finished before : "+(finetime-1));
                                     int theit=1;
                                     while(finetime>0){
                                         if(finetime>=10){
