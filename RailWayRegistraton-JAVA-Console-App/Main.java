@@ -24,7 +24,7 @@ class Admin{
     String name;
     String pin;
 }
-public class Main{
+class Main{
     public static ArrayList<Integer> edittrain(ArrayList<Train> x){
         Scanner sc = new Scanner(System.in);
         ArrayList<Integer> res = new ArrayList<>();
@@ -166,13 +166,18 @@ public class Main{
         t1.arr = a;
         User u1 = new User();
         u1.name = "u1";
-        u1.pin = "u1u1";
+        u1.pin = "1111";
         u1.wallet = 1000;
+        User u2 = new User();
+        u2.name = "u2";
+        u2.pin = "2222";
+        u2.wallet = 1000;
         Admin a1 = new Admin();
         a1.name = "a1";
-        a1.pin = "a1a1";
+        a1.pin = "1111";
         trains.add(t1);
         users.add(u1);
+        users.add(u2);
         admins.add(a1);
         Boolean whole_exit=false;
         while(!whole_exit){
@@ -242,7 +247,7 @@ public class Main{
                                 System.out.println(trains.get(i).name);
                                 for(int j=0;j<trains.get(i).arr.length;j++){
                                     for(int k=0;k<trains.get(i).arr[0].length;k++){
-                                        System.out.print(trains.get(i).arr[j][k]);
+                                        System.out.print(trains.get(i).arr[j][k]+" ");
                                     }
                                     System.out.println();
                                 }
@@ -330,8 +335,8 @@ public class Main{
                                     if(from>=0&&from<trains.get(ind).stations&&to>0&&to<trains.get(ind).stations&&from<to){
                                         Boolean avail = true;
                                         for(int i=0;i<seats.size();i++){
-                                            for(int j=from;j<=to;j++){
-                                                if(trains.get(ind).arr[j][i]!=0){
+                                            for(int j=from;j<to;j++){
+                                                if(trains.get(ind).arr[j][seats.get(i)]!=0){
                                                     avail=false;
                                                 }
                                             }
@@ -349,7 +354,7 @@ public class Main{
                                                 case 1:if(users.get(ul).wallet>=tamt){
                                                     for(int i=0;i<seats.size();i++){
                                                         for(int j=from;j<to;j++){
-                                                            trains.get(ind).arr[j][i]=1;
+                                                            trains.get(ind).arr[j][seats.get(i)]=1;
                                                         }
                                                     }
                                                     Ticket tick = new Ticket();
@@ -439,7 +444,7 @@ public class Main{
                                     System.out.println("To : "+users.get(ul).Booked.get(i).to);
                                     System.out.print("Booked Seats : ");
                                     for(int j=0;j<users.get(ul).Booked.get(i).seatno.size();j++){
-                                        System.out.print(users.get(ul).Booked.get(i).seatno.get(j));
+                                        System.out.print(users.get(ul).Booked.get(i).seatno.get(j)+",");
                                     }
                                     System.out.println();
                                     System.out.println("Total Amount : "+users.get(ul).Booked.get(i).amt);
