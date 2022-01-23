@@ -1,5 +1,4 @@
 import java.util.*;
-
 class Admin{
     String password;
     String name;
@@ -121,10 +120,6 @@ class Merchant{
             return x;
         }
     }
-
-
-
-
     public static ArrayList<String> updateproduct(ArrayList<HashMap<String,String>> x){
         Scanner sc = new Scanner(System.in);
         ArrayList<String> ans = new ArrayList<>();
@@ -227,7 +222,7 @@ public static Merchant createmerchant(){
         u1.name = "u1";
         u1.password = "1111";
         u2.name  = "u2";
-        u22password = "2222";
+        u2.password = "2222";
         ArrayList<Admin> admins= new ArrayList<>();
         a1.name="a1";
         a1.password="1111";
@@ -316,12 +311,10 @@ public static Merchant createmerchant(){
                 System.out.println("Enter Your Choice : ");
                 int mo =sc.nextInt();
                 switch(mo){
-                    
                 case 1:merchant_list.add(createmerchant());
                 System.out.println("Registered Successfully");
                 System.out.println("--Waiting For Approval--");
                 break;
-
                 case 2:int m =valid_merchant(merchant_list);
                 if(m!=-1){
                     Boolean merchant_exit_status = false;
