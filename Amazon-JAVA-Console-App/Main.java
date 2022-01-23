@@ -223,13 +223,16 @@ public static Merchant createmerchant(){
         Admin a1 = new Admin();
         Admin a2 = new Admin();
         User u1 = new User();
-        u1.name = "user1";
-        u1.password = "u1u1";
+        User u2 = new User();
+        u1.name = "u1";
+        u1.password = "1111";
+        u2.name  = "u2";
+        u22password = "2222";
         ArrayList<Admin> admins= new ArrayList<>();
-        a1.name="admin1";
-        a1.password="a1a1";
-        a2.name="admin2";
-        a2.password="a2a2";
+        a1.name="a1";
+        a1.password="1111";
+        a2.name="a2";
+        a2.password="2222";
         admins.add(a1);
         admins.add(a2);
         ArrayList<Merchant> merchant_list = new ArrayList<>();
@@ -251,6 +254,7 @@ public static Merchant createmerchant(){
         m1.prod.add(y);
         merchant_list.add(m1);
         user_list.add(u1);
+        user_list.add(u2);
         Boolean exit_status=false;
         while(!exit_status){
             System.out.println("1-Admin");
