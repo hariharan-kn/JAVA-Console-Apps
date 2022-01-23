@@ -14,7 +14,6 @@ class Car{
 class Admin{
     String name;
     String pin;
-
 }
 class Bill{
     Date pickup;
@@ -111,7 +110,6 @@ public static ArrayList<Integer> editcar(ArrayList<Car> x){
         User n = new User();
         System.out.println("Enter Your Name : ");
         String uname = sc.next();
-
         System.out.println("Enter Your pin : ");
         String pin = sc.next();
         n.name =uname;
@@ -368,8 +366,8 @@ public static ArrayList<Integer> editcar(ArrayList<Car> x){
                             for(int i=0;i<users.get(ul).History.size();i++){
                                 if(users.get(ul).History.get(i).id==caID){
                                     Hindi = i;
-                                }}
-                            
+                                }
+                            }
                             users.get(ul).History.remove(Hindi);
                             cars.get(indi).timeline.remove(tindi);
                             break;
