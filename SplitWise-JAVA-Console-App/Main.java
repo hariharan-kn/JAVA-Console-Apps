@@ -76,7 +76,6 @@ public class Main{
                 }
             }
         }
-        
         return res;
     }
     public static int valid_user(ArrayList<User> x){
@@ -118,7 +117,6 @@ public class Main{
             System.out.println(i+"-"+x.get(i).name);
                 }
         }
-
     }
     if(p){
         System.out.println("Choose from the above  : ");
@@ -151,7 +149,6 @@ public class Main{
         return res;
     }
     public static Expense addExpense(ArrayList<User> x,User u){
-        
         Scanner sc = new Scanner(System.in);
         Expense e = new Expense();
         if(x.size()>0){
@@ -176,9 +173,7 @@ public class Main{
     else{
         e.amt = -2;
     }
-    
         return e;
-
     }
     public static Expense expensepayup(ArrayList<Expense> expenses,User u){
         Scanner sc = new Scanner(System.in);
@@ -219,14 +214,14 @@ public class Main{
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter Your Group name : ");
         String name = sc.nextLine();
-        System.out.println("Enter the Number of friends You want to add : ");
         g.name = name;
-        int nos = sc.nextInt();
         g.groupmembers.add(y);
-        if(nos>0){
-            for(int i=0;i<x.size();i++){
+        for(int i=0;i<x.size();i++){
                 System.out.println(i+"-"+x.get(i).name);
-            }
+        }
+        System.out.println("Enter the Number of friends You want to add : ");
+        int nos = sc.nextInt();
+        if(nos<=x.size()&&nos>0){
         System.out.println("Enter the users You Want to add : ");
         for(int i=0;i<nos;i++){
             int k = sc.nextInt();
@@ -236,9 +231,7 @@ public class Main{
                 }
             }
         }
-        
-    }
-    for(int i=0;i<g.groupmembers.size();i++){
+        for(int i=0;i<g.groupmembers.size();i++){
         int c=0;
         for(int j=0;j<g.groupmembers.size();j++){
             if(g.groupmembers.get(i).name.equals(g.groupmembers.get(j).name)){
@@ -252,6 +245,10 @@ public class Main{
     for(int i=0;i<g.groupmembers.size();i++){
         System.out.println(g.groupmembers.get(i).name);
     }
+}
+    else{
+        g.name="inv";
+    }
         return g;
     }
     public static void main(String[] args) {
@@ -261,13 +258,13 @@ public class Main{
         User u2 = new User();
         User u3 = new User();
         u1.name = "u1";
-        u1.pin ="u1u1";
+        u1.pin ="1111";
         u1.wallet = 1000;
         u2.name = "u2";
-        u2.pin ="u2u2";
+        u2.pin ="2222";
         u2.wallet = 1000;
         u3.name = "u3";
-        u3.pin ="u3u3";
+        u3.pin ="3333";
         u3.wallet = 1000;
         users.add(u1);
         users.add(u2);
@@ -278,7 +275,6 @@ public class Main{
         users.get(2).friends.add(users.get(0));
         Boolean whole_exit = false;
         while(!whole_exit){
-            
             System.out.println("1-New User");
             System.out.println("2-Existing User");
             System.out.println("3-Exit");
@@ -351,6 +347,7 @@ public class Main{
                             }
                             break;
                             case 5:Group g = creategroup(users.get(ul).friends,users.get(ul));
+                            if(!g.name.equals("inv")){
                             users.get(ul).groups.add(g);
                             for(int i=0;i<g.groupmembers.size();i++){
                                 if(!g.groupmembers.get(i).name.equals(users.get(ul).name)){
@@ -358,6 +355,7 @@ public class Main{
                                 }
                             }
                             System.out.println("Group Created Successfully");
+                        }
                             break;
                             case 6 : ArrayList<Integer> am = addmember(users.get(ul));
                             if(am.get(0)!=-1){
@@ -395,10 +393,8 @@ public class Main{
                             if(age.amt!=-1){
                                 users.get(ul).groups.get(ageo).groupexpenses.add(age);
                             }
-                               
                             break;
                             case 8:
-                            System.out.println(users.get(ul).groups.get(0).groupexpenses.size());
                             for(int i=0;i<users.get(ul).groups.size();i++){
                                 System.out.println("Group name : "+users.get(ul).groups.get(i).name);
                                 for(int j=0;j<users.get(ul).groups.get(i).groupexpenses.size();j++){
@@ -456,8 +452,7 @@ public class Main{
                                     else{
                                         System.out.println("Insuffiecient Balance");
                                     }
-                                }
-                                
+                                }   
                             }
                             break;
                             case 10:for(int i = 0;i<users.get(ul).friends.size();i++){
