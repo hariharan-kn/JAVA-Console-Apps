@@ -232,8 +232,8 @@ public static Merchant createmerchant(){
         admins.add(a2);
         ArrayList<Merchant> merchant_list = new ArrayList<>();
         ArrayList<User> user_list = new ArrayList<>();
-        m1.name="asus";
-        m1.password="m1m1";
+        m1.name="m1";
+        m1.password="1111";
         m1.approval=true;
         HashMap<String,String> x = new HashMap<>();
         x.put("name", "rog");
