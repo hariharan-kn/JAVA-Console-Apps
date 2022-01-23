@@ -102,9 +102,7 @@ class Main{
         else{
             t.id=-1;
         }
-
-        return t;
-        
+    return t;
     }
     public static int valid_admin(ArrayList<Admin> x){
         Scanner sc = new Scanner(System.in);
@@ -385,7 +383,6 @@ class Main{
                                                 users.get(ul).Booked.add(tick);
                                             }
                                             break;
-                                            
                                         }
                                         else{
                                             System.out.println("Tickets Not Available");
