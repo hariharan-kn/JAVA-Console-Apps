@@ -195,8 +195,7 @@ public class Main{
         else{
             System.out.println("Incorrect Password");
             return null;
-        }
-        
+        }    
     }
 public static ArrayList<Integer> valid_user(ArrayList<UserAccount> x ){
         Scanner sc = new Scanner(System.in);
